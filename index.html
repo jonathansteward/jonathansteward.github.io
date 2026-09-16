@@ -10,30 +10,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Public+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f2f5f0;--bg2:#ffffff;--stripe:#e8eee5;
+    --bg:#f2f5f0;--bg2:#ffffff;--bg3:#eaeee6;
     --ink:#132018;--text:#3d4a3f;--muted:#6f7b71;
     --border:#dbe3d7;--border2:#c7d1c1;
     --accent:#8f6a1c;--accent-soft:#f5ead0;--accent-line:#c2a04a;
-    --brass:#6e5313;--brass-soft:#f1e6d2;
-    --red:#a8402d;--amber:#a3721f;
+    --brass:#6e5313;--green:#1a7a4c;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#0e130f;--bg2:#151c16;--stripe:#182019;
+      --bg:#0e130f;--bg2:#151c16;--bg3:#1a221c;
       --ink:#eef3ee;--text:#adb9ae;--muted:#77857a;
       --border:#1e2820;--border2:#2a372c;
       --accent:#d3ac52;--accent-soft:#2a2310;--accent-line:#8f7028;
-      --brass:#e6c46f;--brass-soft:#26200f;
-      --red:#ef7a68;--amber:#e3b459;
+      --brass:#e6c46f;--green:#3fcf8e;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#0e130f;--bg2:#151c16;--stripe:#182019;
+    --bg:#0e130f;--bg2:#151c16;--bg3:#1a221c;
     --ink:#eef3ee;--text:#adb9ae;--muted:#77857a;
     --border:#1e2820;--border2:#2a372c;
     --accent:#d3ac52;--accent-soft:#2a2310;--accent-line:#8f7028;
-    --brass:#e6c46f;--brass-soft:#26200f;
-    --red:#ef7a68;--amber:#e3b459;
+    --brass:#e6c46f;--green:#3fcf8e;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -47,7 +44,7 @@
   body::before{
     content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
     background-image:repeating-linear-gradient(to bottom, transparent 0 27px, var(--border) 27px 28px);
-    opacity:0.5;
+    opacity:0.35;
   }
   a{color:inherit;}
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;text-wrap:balance;color:var(--ink);}
@@ -55,354 +52,360 @@
   a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .mono{font-family:'Space Mono',monospace;}
 
-  /* MASTHEAD */
-  .masthead{
+  /* TOPNAV */
+  .topnav{
     position:sticky;top:0;z-index:20;background:var(--bg2);border-bottom:1px solid var(--border2);
     display:flex;align-items:center;justify-content:space-between;padding:0.9rem 2rem;
   }
-  .mh-ref{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.06em;color:var(--muted);}
-  .mh-ref strong{color:var(--accent);font-weight:700;}
-  .mh-nav{display:flex;gap:1.6rem;}
-  .mh-nav a{font-family:'Space Mono',monospace;font-size:11px;text-decoration:none;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;transition:color 0.2s;}
-  .mh-nav a:hover{color:var(--accent);}
+  .tn-left{display:flex;align-items:baseline;gap:0.9rem;min-width:0;}
+  .tn-brand{font-family:'Fraunces',serif;font-weight:600;font-size:15px;color:var(--ink);white-space:nowrap;}
+  .tn-brand em{color:var(--accent);font-style:normal;}
+  .tn-tag{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);white-space:nowrap;}
+  .tn-links{display:flex;gap:1.5rem;}
+  .tn-links a{font-family:'Space Mono',monospace;font-size:11px;text-decoration:none;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;transition:color 0.2s;}
+  .tn-links a:hover{color:var(--accent);}
 
-  .doc{max-width:840px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
-  section{animation:rise 0.55s ease-out both;}
-  @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  /* LAYOUT */
+  .layout{display:grid;grid-template-columns:1fr 330px;max-width:1180px;margin:0 auto;position:relative;z-index:1;}
+  .main-col{border-right:1px solid var(--border2);padding:2.4rem 2.4rem 2rem;min-width:0;}
+  .right-col{padding:2.4rem 1.6rem 2rem;display:flex;flex-direction:column;gap:1.4rem;}
+  section,.card{animation:rise 0.5s ease-out both;}
+  @keyframes rise{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:translateY(0);}}
 
-  /* COVER */
-  .cover{padding:3.2rem 0 2.6rem;border-bottom:2px solid var(--ink);}
-  .cover-inner{display:flex;gap:2.4rem;align-items:flex-start;justify-content:space-between;}
-  .cover-text{flex:1;min-width:0;}
-  .cover-seal{display:flex;flex-direction:column;align-items:center;gap:0.55rem;flex-shrink:0;padding-top:0.3rem;}
+  /* HERO */
+  .hero{padding-bottom:2rem;margin-bottom:2.2rem;border-bottom:1px solid var(--border2);}
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1.6rem;}
+  .hero-kicker{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;}
+  .hero-name{font-size:2.5rem;font-weight:600;letter-spacing:-0.015em;line-height:1.08;margin-bottom:0.5rem;}
+  .hero-name span{color:var(--accent);}
+  .hero-role{font-family:'Space Mono',monospace;font-size:12px;color:var(--text);}
   .seal-emblem{
-    width:110px;height:110px;border-radius:50%;position:relative;
+    width:84px;height:84px;border-radius:50%;position:relative;flex-shrink:0;
     background:radial-gradient(circle at 32% 26%, var(--accent-line) 0%, var(--accent) 55%, var(--brass) 100%);
     box-shadow:inset 0 2px 3px rgba(255,255,255,0.4), inset 0 -4px 8px rgba(0,0,0,0.32), 0 1px 3px rgba(0,0,0,0.22);
     display:flex;align-items:center;justify-content:center;
   }
-  .seal-emblem::before{content:'';position:absolute;inset:7px;border:1px solid rgba(255,255,255,0.5);border-radius:50%;}
+  .seal-emblem::before{content:'';position:absolute;inset:6px;border:1px solid rgba(255,255,255,0.5);border-radius:50%;}
   .seal-emblem::after{content:'';position:absolute;inset:2px;border:1px solid rgba(0,0,0,0.18);border-radius:50%;}
-  .seal-mono{position:relative;font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;letter-spacing:0.05em;color:#2c2108;text-shadow:0 1px 0 rgba(255,255,255,0.3);}
-  .seal-caption{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase;}
-  .cv-eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem;}
-  .cv-name{font-size:3rem;font-weight:600;letter-spacing:-0.01em;line-height:1.05;margin-bottom:0.5rem;}
-  .cv-role{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--text);margin-bottom:1.6rem;}
-  .cv-role .sep{color:var(--accent-line);margin:0 0.5em;}
-  .cv-intro{font-size:16px;line-height:1.85;max-width:640px;color:var(--text);margin-bottom:1.8rem;}
-  .cv-intro strong{color:var(--ink);font-weight:600;}
-  .stamps{display:flex;gap:0.5rem;flex-wrap:wrap;}
-  .stamp{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.03em;padding:5px 10px;border:1px solid var(--border2);color:var(--text);}
-  .stamp:hover{border-color:var(--accent);color:var(--accent);}
+  .seal-mono{position:relative;font-family:'Fraunces',serif;font-weight:600;font-size:0.95rem;letter-spacing:0.04em;color:#2c2108;text-shadow:0 1px 0 rgba(255,255,255,0.3);}
+  .hero-desc{font-size:15.5px;line-height:1.85;max-width:620px;color:var(--text);margin:1.4rem 0 1.4rem;}
+  .hero-desc strong{color:var(--ink);font-weight:600;}
+  .hero-chips{display:flex;gap:0.5rem;flex-wrap:wrap;}
+  .chip{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.02em;padding:5px 10px;border:1px solid var(--border2);color:var(--text);transition:border-color 0.2s,color 0.2s;}
+  .chip:hover{border-color:var(--accent);color:var(--accent);}
 
-  /* SECTION HEADER (shared) */
-  .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin:2.6rem 0 1.2rem;}
-  .sec-head h2{font-size:1.5rem;font-weight:500;}
-  .sec-count{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);}
-
-  /* COVERAGE GRID */
-  .coverage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);border:1px solid var(--border2);margin-bottom:0.5rem;}
-  .cov-tile{background:var(--bg2);padding:1.3rem 1.2rem;border-top:2px solid var(--accent);display:flex;flex-direction:column;gap:0.4rem;}
-  .cov-stat{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1;}
-  .cov-label{font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--accent);}
-  .cov-desc{font-size:12.5px;color:var(--muted);line-height:1.6;}
-
-  /* REGISTER (table-like) */
-  .register{border-top:1px solid var(--border2);}
-  .reg-row{display:grid;grid-template-columns:56px 1fr auto 92px;gap:1rem;align-items:center;padding:0.95rem 0.5rem;border-bottom:1px solid var(--border);}
-  .reg-row:nth-child(even){background:var(--stripe);}
-  .reg-id{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);}
-  .reg-main .reg-org{font-weight:600;color:var(--ink);font-size:14px;}
-  .reg-main .reg-role{font-family:'Space Mono',monospace;font-size:11px;color:var(--text);margin-top:0.15rem;}
-  .reg-status{font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;padding:2px 8px;border:1px solid var(--accent-line);color:var(--accent);white-space:nowrap;justify-self:start;}
-  .reg-status.closed{color:var(--muted);border-color:var(--border2);}
-  .reg-date{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);text-align:right;}
+  /* SECTION HEADER */
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border2);}
+  .sec-head h2{font-size:1.35rem;font-weight:500;}
+  .sec-count{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);white-space:nowrap;}
 
   /* PROJECTS */
+  .projects-section{margin-bottom:2.2rem;}
   .projects-list{display:grid;gap:1rem;}
-  .project-card{border:1px solid var(--border2);padding:1.4rem;background:var(--bg2);}
+  .project-card{border:1px solid var(--border2);background:var(--bg2);padding:1.3rem;position:relative;overflow:hidden;}
+  .project-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);}
   .pj-head{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin-bottom:0.5rem;flex-wrap:wrap;}
-  .pj-id{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);margin-right:0.6rem;}
-  .pj-title{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;color:var(--ink);}
-  .pj-tag{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--brass);border:1px solid var(--brass);padding:2px 7px;white-space:nowrap;}
-  .pj-desc{font-size:13.5px;color:var(--text);line-height:1.75;margin-bottom:1rem;}
+  .pj-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:500;color:var(--ink);}
+  .pj-num{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);}
+  .pj-desc{font-size:13.3px;color:var(--text);line-height:1.75;margin-bottom:0.9rem;}
   .pj-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem;}
   .pj-tags{display:flex;gap:0.35rem;flex-wrap:wrap;}
   .pj-tags span{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--text);border:1px solid var(--border2);padding:2px 6px;}
-  .pj-links a{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--accent);text-decoration:none;margin-left:1rem;}
+  .pj-links a{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--accent);text-decoration:none;}
   .pj-links a:hover{color:var(--ink);}
 
-  /* ATTESTATIONS (seals) */
-  .seals{display:flex;gap:1.2rem;flex-wrap:wrap;}
-  .seal{display:flex;flex-direction:column;align-items:center;gap:0.6rem;width:132px;}
-  .seal-ring{width:88px;height:88px;border-radius:50%;border:2px solid var(--brass);display:flex;align-items:center;justify-content:center;position:relative;}
-  .seal-ring::before{content:'';position:absolute;inset:6px;border:1px dashed var(--brass);border-radius:50%;opacity:0.55;}
-  .seal-init{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:var(--brass);letter-spacing:0.02em;}
-  .seal-name{font-size:12.5px;font-weight:600;color:var(--ink);text-align:center;}
-  .seal-org{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);text-align:center;}
+  /* TIMELINE (experience + leadership, shared) */
+  .tl-section{margin-bottom:2.2rem;}
+  .tl-item{display:flex;gap:1rem;padding:0.95rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+  .tl-item:first-child{padding-top:0;}
+  .tl-item:last-child{border-bottom:none;padding-bottom:0;}
+  .tl-indicator{display:flex;flex-direction:column;align-items:center;align-self:stretch;}
+  .tl-dot{width:8px;height:8px;border-radius:50%;background:var(--border2);flex-shrink:0;margin-top:6px;}
+  .tl-dot.current{background:var(--accent);box-shadow:0 0 8px var(--accent-line);}
+  .tl-line{width:1px;flex:1;background:var(--border2);min-height:14px;margin-top:4px;}
+  .tl-body{flex:1;min-width:0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .tl-primary{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
+  .tl-secondary{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--text);line-height:1.6;}
+  .tl-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);white-space:nowrap;padding-top:0.2rem;}
 
-  /* SECONDARY GRID */
-  .secondary{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;}
-  .sub-head{font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.9rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border2);}
-  .lead-item{padding:0.7rem 0;border-bottom:1px solid var(--border);}
-  .lead-item:last-child{border-bottom:none;}
-  .lead-org{font-weight:600;font-size:13px;color:var(--ink);}
-  .lead-role{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--text);margin-top:0.15rem;}
-  .lead-date{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--muted);margin-top:0.2rem;}
-  .edu-item{padding:0.7rem 0;border-bottom:1px solid var(--border);}
-  .edu-item:last-child{border-bottom:none;}
-  .edu-degree{font-weight:600;font-size:13px;color:var(--ink);}
-  .edu-school{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--text);margin-top:0.15rem;}
-  .edu-note{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--muted);margin-top:0.2rem;}
+  /* leadership: swap emphasis so the position reads larger than the org */
+  .tl-item.lead .tl-primary{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--ink);}
+  .tl-item.lead .tl-secondary{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);}
 
-  /* FOOTER / CONTACT */
-  .contact{margin-top:3rem;border-top:2px solid var(--ink);padding:1.6rem 0 2.4rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;}
-  .contact-note{font-size:12.5px;color:var(--muted);}
-  .contact-links{display:flex;gap:1.6rem;}
-  .contact-links a{font-family:'Space Mono',monospace;font-size:12px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--accent-line);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
-  .contact-links a:hover{color:var(--accent);border-color:var(--accent);}
+  /* SIDEBAR CARDS */
+  .card{background:var(--bg2);border:1px solid var(--border2);padding:1.4rem;}
+  .card-label{font-family:'Space Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;}
 
-  @media(max-width:760px){
-    .coverage-grid{grid-template-columns:repeat(2,1fr);}
-    .secondary{grid-template-columns:1fr;gap:1.8rem;}
-    .cv-name{font-size:2.2rem;}
-    .reg-row{grid-template-columns:40px 1fr;row-gap:0.3rem;}
-    .reg-status,.reg-date{grid-column:2;justify-self:start;text-align:left;}
-    .cover-inner{flex-direction:column-reverse;align-items:flex-start;gap:1.2rem;}
-    .cover-seal{flex-direction:row;}
+  .pc-header{margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid var(--border2);}
+  .pc-name{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:0.25rem;}
+  .pc-role{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--accent);line-height:1.5;}
+  .pc-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1.2rem;}
+  .pc-stat{background:var(--bg3);padding:0.8rem 0.6rem;text-align:center;}
+  .pc-stat-n{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums;}
+  .pc-stat-l{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);margin-top:0.3rem;letter-spacing:0.02em;}
+  .pc-quote{font-size:12.5px;color:var(--muted);line-height:1.75;font-style:italic;}
+
+  .cert-list{display:grid;gap:0.4rem;}
+  .cert-row{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0.8rem;background:var(--bg3);}
+  .cert-name{font-family:'Space Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);}
+  .cert-org{font-size:10.5px;color:var(--muted);}
+  .cert-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;}
+
+  .edu-list{display:grid;gap:0.85rem;}
+  .edu-item{padding-bottom:0.85rem;border-bottom:1px solid var(--border);}
+  .edu-item:last-child{border-bottom:none;padding-bottom:0;}
+  .edu-degree{font-size:12.5px;font-weight:600;color:var(--ink);}
+  .edu-school{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--text);margin-top:0.2rem;}
+  .edu-note{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-top:0.2rem;}
+
+  .connect-list{display:grid;gap:0.3rem;}
+  .connect-item{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0;border-bottom:1px solid var(--border);transition:padding-left 0.15s;}
+  .connect-item:last-child{border-bottom:none;}
+  .connect-item:hover{padding-left:0.35rem;}
+  .connect-item a{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--ink);text-decoration:none;transition:color 0.2s;}
+  .connect-item:hover a{color:var(--accent);}
+  .connect-item span{font-size:11px;color:var(--muted);}
+
+  .footer{border-top:1px solid var(--border2);padding:1.2rem 2rem;background:var(--bg2);font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;max-width:1180px;margin:0 auto;position:relative;z-index:1;}
+  .footer em{color:var(--accent);font-style:normal;}
+
+  @media(max-width:900px){
+    .layout{grid-template-columns:1fr;max-width:640px;}
+    .main-col{border-right:none;border-bottom:1px solid var(--border2);}
+    .tn-tag{display:none;}
+    .footer{max-width:640px;}
   }
-  @media(max-width:520px){
-    .masthead{padding:0.8rem 1.2rem;}
-    .mh-ref{display:none;}
-    .doc{padding:0 1.2rem;}
-    .coverage-grid{grid-template-columns:1fr;}
+  @media(max-width:560px){
+    .topnav{padding:0.8rem 1.2rem;}
+    .tn-links{gap:1rem;}
+    .main-col{padding:1.8rem 1.2rem 1.5rem;}
+    .right-col{padding:1.5rem 1.2rem 1.8rem;}
+    .hero-name{font-size:2rem;}
+    .hero-top{gap:1rem;}
+    .seal-emblem{width:64px;height:64px;}
+    .seal-mono{font-size:0.75rem;}
+    .footer{padding:1.1rem 1.2rem;}
   }
 </style>
 </head>
 <body>
 
-<header class="masthead">
-  <div class="mh-ref">FILE REF <strong>JMS·GRC·2026</strong></div>
-  <nav class="mh-nav">
-    <a href="#coverage">Coverage</a><a href="#register">Register</a><a href="#attestations">Attestations</a><a href="#contact">Contact</a>
+<div class="topnav">
+  <div class="tn-left">
+    <div class="tn-brand">Jonathan<em>.Steward</em></div>
+    <div class="tn-tag">GRC Engineering Portfolio</div>
+  </div>
+  <nav class="tn-links">
+    <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#leadership">Leadership</a><a href="#certifications">Certifications</a><a href="#connect">Connect</a>
   </nav>
-</header>
+</div>
 
-<main class="doc">
+<div class="layout">
 
-  <!-- COVER -->
-  <section class="cover">
-    <div class="cover-inner">
-      <div class="cover-text">
-        <div class="cv-eyebrow">Record of Engagement — Governance, Risk &amp; Compliance</div>
-        <h1 class="cv-name">Jonathan M. Steward</h1>
-        <div class="cv-role">Senior Cyber GRC Analyst <span class="sep">·</span> Atmus Filtration Technologies <span class="sep">·</span> Nashville, TN</div>
-        <p class="cv-intro">Before I wrote a risk register, I chased what belonged in one — tracing insider-threat cases through Splunk queries and Magnet AXIOM images at Deloitte, then investigating exfiltration alerts at UBS. That investigative habit is still how I build governance programs: <strong>architecting ServiceNow IRM workflows</strong>, shipping Python and Power Automate pipelines that do the repeatable GRC work, and reporting KPIs and KRIs that show risk posture continuously rather than reconstructing it once a year for an auditor.</p>
-        <div class="stamps">
-          <span class="stamp">ISO 27001</span><span class="stamp">NIST RMF</span><span class="stamp">NIST CSF</span><span class="stamp">ISO 27005</span><span class="stamp">ServiceNow IRM</span><span class="stamp">TPRM</span><span class="stamp">AI Risk Governance</span>
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-top">
+        <div>
+          <div class="hero-kicker">Governance, Risk &amp; Compliance</div>
+          <h1 class="hero-name">Jonathan <span>Steward_</span></h1>
+          <div class="hero-role">Senior Cyber GRC Analyst · Atmus Filtration Technologies · Nashville, TN</div>
+        </div>
+        <div class="seal-emblem"><span class="seal-mono">JMS</span></div>
+      </div>
+      <p class="hero-desc">Before I wrote a risk register, I chased what belonged in one — tracing insider-threat cases through Splunk queries and Magnet AXIOM images at Deloitte, then investigating exfiltration alerts at UBS. That investigative habit is still how I build governance programs: <strong>architecting ServiceNow IRM workflows</strong>, shipping Python and Power Automate pipelines that do the repeatable GRC work, and reporting KPIs and KRIs that show risk posture continuously rather than reconstructing it once a year for an auditor.</p>
+      <div class="hero-chips">
+        <span class="chip">ISO 27001</span><span class="chip">NIST RMF</span><span class="chip">NIST CSF</span><span class="chip">ISO 27005</span><span class="chip">ServiceNow IRM</span><span class="chip">TPRM</span><span class="chip">AI Risk Governance</span>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects-section" id="projects">
+      <div class="sec-head">
+        <h2>Projects</h2>
+        <div class="sec-count mono">4 active</div>
+      </div>
+      <div class="projects-list">
+        <div class="project-card">
+          <div class="pj-head">
+            <div class="pj-title">Continuous AWS Compliance &amp; Evidence Pipeline</div>
+            <div class="pj-num">01</div>
+          </div>
+          <p class="pj-desc">Built to close the gap between the enterprise ServiceNow IRM platform and the AWS environments it's supposed to govern. A <strong>detect</strong> loop runs daily at 8 AM CST: GitHub Actions pulls compliance status for seven AWS Config rules, writes evidence into ServiceNow against each mapped CIS v8 control over its REST Table API, and for every non-compliant control calls the Claude API for remediation guidance and runs a FAIR-informed Monte Carlo model (10,000 samples) to quantify exposure as a native ServiceNow risk record — one live finding carried $720K/year in exposure from a single IAM password-policy gap. The report goes out same-day as a PDF, delivered through a Slack bot and to the control owner's inbox. A parallel <strong>prevent</strong> gate converts every Terraform plan to JSON and evaluates it with Conftest against OPA Rego policies as a required branch-protection check, so non-compliant infrastructure is blocked at the pull request instead of remediated after it's already in production.</p>
+          <div class="pj-foot">
+            <div class="pj-tags"><span>python</span><span>aws config</span><span>servicenow irm rest api</span><span>claude api</span><span>terraform + conftest</span><span>fair + monte carlo</span><span>github actions</span></div>
+            <div class="pj-links"><a href="https://github.com/jonathansteward/RiskandCompliance" target="_blank" rel="noopener">github ↗</a></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="pj-head">
+            <div class="pj-title">Vendor Risk Automation Platform</div>
+            <div class="pj-num">02</div>
+          </div>
+          <p class="pj-desc">A Flask application that turns uploaded vendor security documentation or a completed questionnaire into a dollar-denominated FAIR risk assessment. Maps controls across six categories — governance, access controls, integration risk, AI risk, data security, and availability — using the FAIR-CAM model, runs a Monte Carlo simulation for P10/P50/P90 loss exposure, and ranks up to seven mitigation recommendations by simulated risk reduction before exporting the assessment to XLSX or PDF.</p>
+          <div class="pj-foot">
+            <div class="pj-tags"><span>python / flask</span><span>gpt-4o</span><span>fair-cam</span><span>monte carlo</span><span>xlsx / pdf export</span></div>
+            <div class="pj-links"><a href="https://github.com/jonathansteward/VendorRiskAutomation" target="_blank" rel="noopener">github ↗</a></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="pj-head">
+            <div class="pj-title">Certified GRC Engineer Labs</div>
+            <div class="pj-num">03</div>
+          </div>
+          <p class="pj-desc">Six progressive compliance-as-code labs built for the Certified GRC Engineer program: starting from a single NIST 800-53-mapped S3/GCS bucket, through Rego policies that validate a Terraform plan pre-apply, to a multi-cloud AWS + GCP Conftest gate, and finishing with a full pipeline — GitHub Actions over OIDC, tfsec and Conftest gating, and Cosign keyless signing — that produces a verifiable, retention-locked chain of custody for audit evidence.</p>
+          <div class="pj-foot">
+            <div class="pj-tags"><span>terraform</span><span>opa / rego</span><span>conftest</span><span>tfsec</span><span>cosign</span><span>nist 800-53</span></div>
+            <div class="pj-links"><a href="https://github.com/jonathansteward/cgep" target="_blank" rel="noopener">github ↗</a></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="pj-head">
+            <div class="pj-title">GRC Engineering Weekly Labs</div>
+            <div class="pj-num">04</div>
+          </div>
+          <p class="pj-desc">A weekly, build-from-scratch companion track for the same compliance-as-code skillset: Terraform resources tagged to NIST 800-53 controls, Rego policies and tests enforcing AC-3 (no public exposure), CM-6 (required tagging), and SC-28 (encryption at rest), with GitHub Actions workflows capturing each Terraform plan as machine-readable evidence.</p>
+          <div class="pj-foot">
+            <div class="pj-tags"><span>terraform</span><span>opa / rego</span><span>github actions</span><span>nist 800-53</span></div>
+            <div class="pj-links"><a href="https://github.com/jonathansteward/GRCEngineering" target="_blank" rel="noopener">github ↗</a></div>
+          </div>
         </div>
       </div>
-      <div class="cover-seal">
-        <div class="seal-emblem"><span class="seal-mono">JMS</span></div>
-        <div class="seal-caption">Attested · 2026</div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="tl-section" id="experience">
+      <div class="sec-head">
+        <h2>Experience</h2>
+        <div class="sec-count mono">4 roles</div>
       </div>
-    </div>
-  </section>
+      <div class="tl-item">
+        <div class="tl-indicator"><div class="tl-dot current"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <div><div class="tl-primary">Atmus Filtration Technologies</div><div class="tl-secondary">Senior Cyber GRC Analyst · ISO 27001 ISMS · TPRM · ServiceNow IRM</div></div>
+          <div class="tl-date">Aug 2022 — Present</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-indicator"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <div><div class="tl-primary">UBS</div><div class="tl-secondary">Cyber Security Specialist (Authorized Officer) · Data Loss Prevention</div></div>
+          <div class="tl-date">Jun 2021 — Aug 2022</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-indicator"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <div><div class="tl-primary">Deloitte</div><div class="tl-secondary">Cyber Security Analyst · Forensics &amp; Insider Threat</div></div>
+          <div class="tl-date">Oct 2019 — Jun 2021</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-indicator"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div><div class="tl-primary">Deloitte</div><div class="tl-secondary">Associate Cyber Security Business Analyst</div></div>
+          <div class="tl-date">Jul 2019 — Oct 2019</div>
+        </div>
+      </div>
+    </section>
 
-  <!-- COVERAGE -->
-  <div class="sec-head" id="coverage">
-    <h2>Program Coverage</h2>
-    <div class="sec-count mono">6 domains owned</div>
-  </div>
-  <div class="coverage-grid">
-    <div class="cov-tile">
-      <div class="cov-stat">100+</div>
-      <div class="cov-label">Third-Party Risk</div>
-      <div class="cov-desc">Vendors under active onboarding, security assessment, and continuous monitoring.</div>
-    </div>
-    <div class="cov-tile">
-      <div class="cov-stat">1 ISMS</div>
-      <div class="cov-label">ISO 27001</div>
-      <div class="cov-desc">Statement of Applicability, risk methodology, objectives, and treatment plans led end-to-end.</div>
-    </div>
-    <div class="cov-tile">
-      <div class="cov-stat">60→90%</div>
-      <div class="cov-label">Security Awareness</div>
-      <div class="cov-desc">Training completion lift via automated assignment, reminders, and phishing administration.</div>
-    </div>
-    <div class="cov-tile">
-      <div class="cov-stat">80%</div>
-      <div class="cov-label">Attack Surface</div>
-      <div class="cov-desc">Reduction in external security risk exposure through coordinated remediation.</div>
-    </div>
-    <div class="cov-tile">
-      <div class="cov-stat">200+</div>
-      <div class="cov-label">Email Security</div>
-      <div class="cov-desc">Corporate domains enrolled in DMARC to curb spoofing and strengthen domain protection.</div>
-    </div>
-    <div class="cov-tile">
-      <div class="cov-stat">Enterprise</div>
-      <div class="cov-label">AI Risk Governance</div>
-      <div class="cov-desc">Strategy and review process for evaluating generative AI, built with Legal and Privacy.</div>
-    </div>
-  </div>
+    <!-- LEADERSHIP -->
+    <section class="tl-section" id="leadership">
+      <div class="sec-head">
+        <h2>Leadership &amp; Professional Service</h2>
+        <div class="sec-count mono">3 roles</div>
+      </div>
+      <div class="tl-item lead">
+        <div class="tl-indicator"><div class="tl-dot current"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <div><div class="tl-primary">Founding President</div><div class="tl-secondary">GRC Engineering Club — Nashville Chapter</div></div>
+          <div class="tl-date">Aug 2026 — Present</div>
+        </div>
+      </div>
+      <div class="tl-item lead">
+        <div class="tl-indicator"><div class="tl-dot current"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <div><div class="tl-primary">Certification Director</div><div class="tl-secondary">ISACA Middle Tennessee Chapter</div></div>
+          <div class="tl-date">Jun 2026 — Present</div>
+        </div>
+      </div>
+      <div class="tl-item lead">
+        <div class="tl-indicator"><div class="tl-dot current"></div></div>
+        <div class="tl-body">
+          <div><div class="tl-primary">Cybersecurity &amp; Technology Mentor</div><div class="tl-secondary">Vanderbilt University — the Wond'ry</div></div>
+          <div class="tl-date">May 2026 — Present</div>
+        </div>
+      </div>
+    </section>
 
-  <!-- REGISTER -->
-  <div class="sec-head" id="register">
-    <h2>Engagement Register</h2>
-    <div class="sec-count mono">4 entries</div>
-  </div>
-  <div class="register">
-    <div class="reg-row">
-      <div class="reg-id mono">RC-01</div>
-      <div class="reg-main"><div class="reg-org">Atmus Filtration Technologies</div><div class="reg-role">Senior Cyber GRC Analyst</div></div>
-      <div class="reg-status">Current</div>
-      <div class="reg-date">Aug 2022 —</div>
-    </div>
-    <div class="reg-row">
-      <div class="reg-id mono">RC-02</div>
-      <div class="reg-main"><div class="reg-org">UBS</div><div class="reg-role">Cyber Security Specialist (Authorized Officer) · Data Loss Prevention</div></div>
-      <div class="reg-status closed">Closed</div>
-      <div class="reg-date">Jun 2021 – Aug 2022</div>
-    </div>
-    <div class="reg-row">
-      <div class="reg-id mono">RC-03</div>
-      <div class="reg-main"><div class="reg-org">Deloitte</div><div class="reg-role">Cyber Security Analyst · Forensics &amp; Insider Threat</div></div>
-      <div class="reg-status closed">Closed</div>
-      <div class="reg-date">Oct 2019 – Jun 2021</div>
-    </div>
-    <div class="reg-row">
-      <div class="reg-id mono">RC-04</div>
-      <div class="reg-main"><div class="reg-org">Deloitte</div><div class="reg-role">Associate Cyber Security Business Analyst</div></div>
-      <div class="reg-status closed">Closed</div>
-      <div class="reg-date">Jul 2019 – Oct 2019</div>
-    </div>
   </div>
 
-  <!-- PROJECTS -->
-  <div class="sec-head">
-    <h2>Projects</h2>
-    <div class="sec-count mono">4 builds</div>
+  <!-- RIGHT COLUMN -->
+  <div class="right-col">
+
+    <!-- PROFILE -->
+    <div class="card">
+      <div class="pc-header">
+        <div class="pc-name">Jonathan Steward</div>
+        <div class="pc-role">Senior Cyber GRC Analyst · Atmus Filtration Technologies</div>
+      </div>
+      <div class="pc-stat-grid">
+        <div class="pc-stat"><div class="pc-stat-n">7+</div><div class="pc-stat-l">years exp</div></div>
+        <div class="pc-stat"><div class="pc-stat-n">3</div><div class="pc-stat-l">certifications</div></div>
+        <div class="pc-stat"><div class="pc-stat-n">100+</div><div class="pc-stat-l">vendors in TPRM</div></div>
+        <div class="pc-stat"><div class="pc-stat-n">80%</div><div class="pc-stat-l">ext. risk reduced</div></div>
+      </div>
+      <p class="pc-quote">"The goal isn't a clean audit once a year — it's KPIs and KRIs that show real risk posture continuously, so governance keeps pace with how fast the business actually changes."</p>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="card" id="certifications">
+      <div class="card-label">Certifications</div>
+      <div class="cert-list">
+        <div class="cert-row"><div><div class="cert-name">CISM</div><div class="cert-org">ISACA</div></div><div class="cert-dot"></div></div>
+        <div class="cert-row"><div><div class="cert-name">CRISC</div><div class="cert-org">ISACA</div></div><div class="cert-dot"></div></div>
+        <div class="cert-row"><div><div class="cert-name">ISO/IEC 27001:2022</div><div class="cert-org">Lead Auditor</div></div><div class="cert-dot"></div></div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="card">
+      <div class="card-label">Education</div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-degree">M.Eng., Cybersecurity Analytics</div>
+          <div class="edu-school">The George Washington University</div>
+          <div class="edu-note">Final GPA 3.86</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">B.S., Computer Science</div>
+          <div class="edu-school">Vanderbilt University</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECT -->
+    <div class="card" id="connect">
+      <div class="card-label">Connect</div>
+      <div class="connect-list">
+        <div class="connect-item"><a href="https://www.linkedin.com/in/jonathansteward97/" target="_blank" rel="noopener">LinkedIn</a><span>↗</span></div>
+        <div class="connect-item"><a href="https://github.com/jonathansteward" target="_blank" rel="noopener">GitHub</a><span>↗</span></div>
+        <div class="connect-item"><a href="mailto:jonathan.steward16@gmail.com">Email</a><span>↗</span></div>
+      </div>
+    </div>
+
   </div>
-  <div class="projects-list">
-    <div class="project-card">
-      <div class="pj-head">
-        <div><span class="pj-id">PJ-01</span><span class="pj-title">Continuous AWS Compliance &amp; Evidence Pipeline</span></div>
-        <div class="pj-tag">flagship build</div>
-      </div>
-      <p class="pj-desc">Built to close the gap between the enterprise ServiceNow IRM platform and the AWS environments it's supposed to govern. A <strong>detect</strong> loop runs daily at 8 AM CST: GitHub Actions pulls compliance status for seven AWS Config rules, writes evidence into ServiceNow against each mapped CIS v8 control over its REST Table API, and for every non-compliant control calls the Claude API for remediation guidance and runs a FAIR-informed Monte Carlo model (10,000 samples) to quantify exposure as a native ServiceNow risk record — one live finding carried $720K/year in exposure from a single IAM password-policy gap. The report goes out same-day as a PDF, delivered through a Slack bot and to the control owner's inbox. A parallel <strong>prevent</strong> gate converts every Terraform plan to JSON and evaluates it with Conftest against OPA Rego policies as a required branch-protection check, so non-compliant infrastructure is blocked at the pull request instead of remediated after it's already in production.</p>
-      <div class="pj-foot">
-        <div class="pj-tags"><span>python</span><span>aws config</span><span>servicenow irm rest api</span><span>claude api</span><span>terraform + conftest</span><span>fair + monte carlo</span><span>github actions</span></div>
-        <div class="pj-links"><a href="https://github.com/jonathansteward/RiskandCompliance" target="_blank" rel="noopener">github ↗</a></div>
-      </div>
-    </div>
+</div>
 
-    <div class="project-card">
-      <div class="pj-head">
-        <div><span class="pj-id">PJ-02</span><span class="pj-title">Vendor Risk Automation Platform</span></div>
-        <div class="pj-tag">TPRM</div>
-      </div>
-      <p class="pj-desc">A Flask application that turns uploaded vendor security documentation or a completed questionnaire into a dollar-denominated FAIR risk assessment. Maps controls across six categories — governance, access controls, integration risk, AI risk, data security, and availability — using the FAIR-CAM model, runs a Monte Carlo simulation for P10/P50/P90 loss exposure, and ranks up to seven mitigation recommendations by simulated risk reduction before exporting the assessment to XLSX or PDF.</p>
-      <div class="pj-foot">
-        <div class="pj-tags"><span>python / flask</span><span>gpt-4o</span><span>fair-cam</span><span>monte carlo</span><span>xlsx / pdf export</span></div>
-        <div class="pj-links"><a href="https://github.com/jonathansteward/VendorRiskAutomation" target="_blank" rel="noopener">github ↗</a></div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="pj-head">
-        <div><span class="pj-id">PJ-03</span><span class="pj-title">Certified GRC Engineer Labs</span></div>
-        <div class="pj-tag">lab series</div>
-      </div>
-      <p class="pj-desc">Six progressive compliance-as-code labs built for the Certified GRC Engineer program: starting from a single NIST 800-53-mapped S3/GCS bucket, through Rego policies that validate a Terraform plan pre-apply, to a multi-cloud AWS + GCP Conftest gate, and finishing with a full pipeline — GitHub Actions over OIDC, tfsec and Conftest gating, and Cosign keyless signing — that produces a verifiable, retention-locked chain of custody for audit evidence.</p>
-      <div class="pj-foot">
-        <div class="pj-tags"><span>terraform</span><span>opa / rego</span><span>conftest</span><span>tfsec</span><span>cosign</span><span>nist 800-53</span></div>
-        <div class="pj-links"><a href="https://github.com/jonathansteward/cgep" target="_blank" rel="noopener">github ↗</a></div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="pj-head">
-        <div><span class="pj-id">PJ-04</span><span class="pj-title">GRC Engineering Weekly Labs</span></div>
-        <div class="pj-tag">in progress</div>
-      </div>
-      <p class="pj-desc">A weekly, build-from-scratch companion track for the same compliance-as-code skillset: Terraform resources tagged to NIST 800-53 controls, Rego policies and tests enforcing AC-3 (no public exposure), CM-6 (required tagging), and SC-28 (encryption at rest), with GitHub Actions workflows capturing each Terraform plan as machine-readable evidence.</p>
-      <div class="pj-foot">
-        <div class="pj-tags"><span>terraform</span><span>opa / rego</span><span>github actions</span><span>nist 800-53</span></div>
-        <div class="pj-links"><a href="https://github.com/jonathansteward/GRCEngineering" target="_blank" rel="noopener">github ↗</a></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ATTESTATIONS -->
-  <div class="sec-head" id="attestations">
-    <h2>Attestations</h2>
-    <div class="sec-count mono">3 active</div>
-  </div>
-  <div class="seals">
-    <div class="seal">
-      <div class="seal-ring"><span class="seal-init">CISM</span></div>
-      <div class="seal-name">Certified Information Security Manager</div>
-      <div class="seal-org">ISACA</div>
-    </div>
-    <div class="seal">
-      <div class="seal-ring"><span class="seal-init">CRISC</span></div>
-      <div class="seal-name">Certified in Risk &amp; Information Systems Control</div>
-      <div class="seal-org">ISACA</div>
-    </div>
-    <div class="seal">
-      <div class="seal-ring"><span class="seal-init">27001</span></div>
-      <div class="seal-name">ISO/IEC 27001:2022</div>
-      <div class="seal-org">Lead Auditor</div>
-    </div>
-  </div>
-
-  <!-- SECONDARY -->
-  <div class="sec-head"><h2>Standing Record</h2><div class="sec-count mono"></div></div>
-  <div class="secondary">
-    <div>
-      <div class="sub-head">Leadership &amp; Community</div>
-      <div class="lead-item">
-        <div class="lead-org">GRC Engineering Club — Nashville Chapter</div>
-        <div class="lead-role">Founding President</div>
-        <div class="lead-date">Aug 2026 — Present</div>
-      </div>
-      <div class="lead-item">
-        <div class="lead-org">ISACA Middle Tennessee Chapter</div>
-        <div class="lead-role">Certification Director</div>
-        <div class="lead-date">Jun 2026 — Present</div>
-      </div>
-      <div class="lead-item">
-        <div class="lead-org">Vanderbilt University — the Wond'ry</div>
-        <div class="lead-role">Cybersecurity &amp; Technology Mentor</div>
-        <div class="lead-date">May 2026 — Present</div>
-      </div>
-    </div>
-    <div>
-      <div class="sub-head">Education</div>
-      <div class="edu-item">
-        <div class="edu-degree">M.Eng., Cybersecurity Analytics</div>
-        <div class="edu-school">The George Washington University</div>
-        <div class="edu-note">Final GPA 3.86</div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-degree">B.S., Computer Science</div>
-        <div class="edu-school">Vanderbilt University</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CONTACT -->
-  <footer class="contact" id="contact">
-    <div class="contact-note">Record maintained by Jonathan Steward, Nashville, TN — last updated 2026.</div>
-    <div class="contact-links">
-      <a href="https://www.linkedin.com/in/jonathansteward97/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/jonathansteward" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:jonathan.steward16@gmail.com">Email</a>
-    </div>
-  </footer>
-
-</main>
+<div class="footer">
+  <span>Jonathan<em>.Steward</em></span>
+  <span>© 2026</span>
+</div>
 
 </body>
 </html>
