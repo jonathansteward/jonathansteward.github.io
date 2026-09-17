@@ -209,7 +209,7 @@
           <p class="pj-desc">Built to close the gap between the enterprise ServiceNow IRM platform and the AWS environments it's supposed to govern. A <strong>detect</strong> loop runs daily at 8 AM CST: GitHub Actions pulls compliance status for seven AWS Config rules, writes evidence into ServiceNow against each mapped CIS v8 control over its REST Table API, and for every non-compliant control calls the Claude API for remediation guidance and runs a FAIR-informed Monte Carlo model (10,000 samples) to quantify exposure as a native ServiceNow risk record. One live finding carried $720K/year in exposure from a single IAM password-policy gap. The report goes out same-day as a PDF, delivered through a Slack bot and to the control owner's inbox. A parallel <strong>prevent</strong> gate converts every Terraform plan to JSON and evaluates it with Conftest against OPA Rego policies as a required branch-protection check, so non-compliant infrastructure is blocked at the pull request instead of remediated after it's already in production.</p>
           <div class="pj-foot">
             <div class="pj-tags"><span>python</span><span>aws config</span><span>servicenow irm rest api</span><span>claude api</span><span>terraform + conftest</span><span>fair + monte carlo</span><span>github actions</span></div>
-            <div class="pj-links"><a href="https://github.com/jonathansteward/RiskandCompliance" target="_blank" rel="noopener">github ↗</a><a href="https://github.com/jonathansteward/RiskandCompliance/blob/main/docs/continuous-control-monitoring-aws-servicenow-python.pdf" target="_blank" rel="noopener">presentation ↗</a></div>
+            <div class="pj-links"><a href="https://github.com/jonathansteward/RiskandCompliance" target="_blank" rel="noopener">github ↗</a><a href="continuous-control-monitoring-aws-servicenow-python.pdf" target="_blank" rel="noopener">presentation ↗</a></div>
           </div>
         </div>
 
@@ -230,14 +230,14 @@
             <div class="pj-title">GRC Engineering Projects</div>
             <div class="pj-num">03</div>
           </div>
-          <p class="pj-desc-intro">Six small projects built through the Certified GRC Engineer, Practitioner (CGE-P) curriculum, each with committed evidence artifacts:</p>
+          <p class="pj-desc-intro">Selected GRC Engineering projects</p>
           <div class="lab-list">
-            <div class="lab-item"><span class="lab-num">First Compliant Resource:</span> a hardened AWS S3 primitive, encryption, public-access block, versioning, and tagging enforced directly in Terraform.</div>
-            <div class="lab-item"><span class="lab-num">Terraform Modules for Compliance:</span> the same control set wrapped as a reusable module for GCP Cloud Storage.</div>
-            <div class="lab-item"><span class="lab-num">IaC as Compliance Evidence:</span> scripted capture of Terraform plan and state into a dedicated evidence vault.</div>
-            <div class="lab-item"><span class="lab-num">Compliance Policies in Rego:</span> an OPA policy gate covering NIST 800-53 AC-3, CM-6, and SC-28, each with its own unit test.</div>
-            <div class="lab-item"><span class="lab-num">Policy as Code with Terraform:</span> the same three controls extended into a multi-cloud AWS and GCP Conftest gate.</div>
-            <div class="lab-item"><span class="lab-num">Evidence Pipeline and Chain of Custody:</span> GitHub Actions over OIDC, Conftest and tfsec gating, Cosign keyless signing, and S3 Object Lock retention for a signed chain of custody.</div>
+            <div class="lab-item"><span class="lab-num">First Compliant Resource:</span> Hardened an AWS S3 bucket directly in Terraform: encryption, versioning, public-access blocking, and mandatory tagging (NIST 800-53 SC-28, AC-3, CM-6), with the Terraform plan and state committed as evidence instead of a screenshot.</div>
+            <div class="lab-item"><span class="lab-num">Terraform Modules for Compliance:</span> Refactored that control set into a reusable Terraform module for GCP Cloud Storage so new buckets inherit encryption, key management, audit-log retention, and tagging by default instead of being configured one at a time.</div>
+            <div class="lab-item"><span class="lab-num">IaC as Compliance Evidence:</span> Wrote a script that captures Terraform plan and state output at deploy time into a dedicated evidence vault, turning every infrastructure change into a timestamped compliance record automatically.</div>
+            <div class="lab-item"><span class="lab-num">Compliance Policies in Rego:</span> Wrote three OPA policies covering NIST 800-53 AC-3 (no public access), CM-6 (required tagging), and SC-28 (encryption at rest), each with its own unit test, and ran them against Terraform plan output to catch violations before a human reviews the change.</div>
+            <div class="lab-item"><span class="lab-num">Policy as Code with Terraform:</span> Extended the policy gate across AWS and GCP with cloud-specific Rego variants and a Conftest wrapper script, then captured both a passing and a failing run as evidence that the gate actually blocks non-compliant changes, not just logs them.</div>
+            <div class="lab-item"><span class="lab-num">Evidence Pipeline and Chain of Custody:</span> Built the full evidence pipeline end to end: GitHub Actions authenticates to AWS over OIDC with no long-lived keys, gates every pull request with Conftest and tfsec, then signs the evidence bundle with Cosign and stores it in S3 under Object Lock retention. Documented a real limitation in a written chain-of-custody analysis: Object Lock blocks deletion but not a new object version, and called it out rather than glossing over it.</div>
           </div>
           <div class="pj-foot">
             <div class="pj-tags"><span>terraform</span><span>opa / rego</span><span>conftest</span><span>tfsec</span><span>cosign</span><span>nist 800-53</span><span>github actions</span></div>
