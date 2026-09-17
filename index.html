@@ -203,7 +203,6 @@
         <div class="project-card">
           <div class="pj-head">
             <div class="pj-title">Implementing Continuous Control Monitoring with AWS, ServiceNow IRM, and Python</div>
-            <div class="pj-num">01</div>
           </div>
           <p class="pj-desc">Built to close the gap between the enterprise ServiceNow IRM platform and the AWS environments it's supposed to govern. A <strong>detect</strong> loop runs daily at 8 AM CST: GitHub Actions pulls compliance status for seven AWS Config rules, writes evidence into ServiceNow against each mapped CIS v8 control over its REST Table API, and for every non-compliant control calls the Claude API for remediation guidance and runs a FAIR-informed Monte Carlo model (10,000 samples) to quantify exposure as a native ServiceNow risk record. One live finding carried $720K/year in exposure from a single IAM password-policy gap. The report goes out same-day as a PDF, delivered through a Slack bot and to the control owner's inbox. A parallel <strong>prevent</strong> gate converts every Terraform plan to JSON and evaluates it with Conftest against OPA Rego policies as a required branch-protection check, so non-compliant infrastructure is blocked at the pull request instead of remediated after it's already in production.</p>
           <div class="pj-foot">
