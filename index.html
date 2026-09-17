@@ -4,6 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Jonathan Steward, GRC Engineer specializing in ISO 27001, NIST RMF, and third-party risk, building automated governance workflows in ServiceNow IRM and Python.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jonathansteward.github.io/">
+<meta property="og:title" content="GRC Portfolio - Jonathan Steward">
+<meta property="og:description" content="Jonathan Steward, GRC Engineer specializing in ISO 27001, NIST RMF, and third-party risk, building automated governance workflows in ServiceNow IRM and Python.">
+<meta property="og:image" content="https://jonathansteward.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jonathan Steward, GRC Engineer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GRC Portfolio - Jonathan Steward">
+<meta name="twitter:description" content="Jonathan Steward, GRC Engineer specializing in ISO 27001, NIST RMF, and third-party risk, building automated governance workflows in ServiceNow IRM and Python.">
+<meta name="twitter:image" content="https://jonathansteward.github.io/og-image.png">
 <title>GRC Portfolio - Jonathan Steward</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +72,7 @@
   .chip:hover{border-color:var(--accent);color:var(--accent);}
 
   /* RESUME CALLOUT */
-  .resume-callout{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;background:var(--bg2);border:1px solid var(--border2);border-left:2px solid var(--accent);padding:1.1rem 1.4rem;margin-bottom:2.2rem;}
+  .resume-callout{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;background:var(--bg2);border:1px solid var(--border2);padding:1.1rem 1.4rem;margin-bottom:2.2rem;}
   .rc-label{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
   .rc-desc{font-size:13px;color:var(--muted);}
   .rc-button{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.03em;color:var(--bg);background:var(--accent);padding:9px 18px;text-decoration:none;white-space:nowrap;transition:opacity 0.2s;}
@@ -75,7 +87,6 @@
   .projects-section{margin-bottom:2.2rem;}
   .projects-list{display:grid;gap:1rem;}
   .project-card{border:1px solid var(--border2);background:var(--bg2);padding:1.3rem;position:relative;overflow:hidden;}
-  .project-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);}
   .pj-head{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin-bottom:0.5rem;flex-wrap:wrap;}
   .pj-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:500;color:var(--ink);}
   .pj-desc{font-size:14.5px;color:var(--text);line-height:1.75;margin-bottom:0.9rem;}
@@ -91,17 +102,16 @@
 
   /* TIMELINE (experience + leadership, shared) */
   .tl-section{margin-bottom:2.2rem;}
-  .tl-item{display:flex;gap:1rem;padding:0.95rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+  .tl-item{display:grid;grid-template-columns:136px 1px 1fr;column-gap:1.1rem;padding:0.95rem 0;border-bottom:1px solid var(--border);align-items:baseline;}
   .tl-item:first-child{padding-top:0;}
   .tl-item:last-child{border-bottom:none;padding-bottom:0;}
-  .tl-indicator{display:flex;flex-direction:column;align-items:center;align-self:stretch;}
-  .tl-dot{width:8px;height:8px;border-radius:50%;background:var(--border2);flex-shrink:0;margin-top:6px;}
-  .tl-dot.current{background:var(--accent);box-shadow:0 0 8px var(--accent-line);}
-  .tl-line{width:1px;flex:1;background:var(--border2);min-height:14px;margin-top:4px;}
-  .tl-body{flex:1;min-width:0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .tl-rule{align-self:stretch;background:var(--border2);}
+  .tl-date{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);white-space:nowrap;text-align:right;}
+  .tl-date.current{color:var(--accent);font-weight:700;}
+  .tl-body{min-width:0;}
   .tl-primary{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
+  .tl-current-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-line);padding:2px 7px;margin-left:0.6rem;vertical-align:middle;}
   .tl-secondary{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--text);line-height:1.6;}
-  .tl-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);white-space:nowrap;padding-top:0.2rem;}
 
   /* leadership: swap emphasis so the position reads larger than the org */
   .tl-item.lead .tl-primary{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--ink);}
@@ -154,6 +164,9 @@
     .right-col{padding:1.5rem 1.2rem 1.8rem;}
     .hero-name{font-size:2rem;}
     .footer{padding:1.1rem 1.2rem;}
+    .tl-item{grid-template-columns:1px 1fr;row-gap:0.3rem;}
+    .tl-date{grid-column:2;text-align:left;order:-1;}
+    .tl-rule{grid-row:1 / 3;}
   }
 </style>
 </head>
@@ -175,8 +188,8 @@
     <section class="hero">
       <div class="hero-kicker">GRC Engineer</div>
       <h1 class="hero-name">Jonathan <span>Steward</span></h1>
-      <p class="hero-desc">My approach to GRC started with a Computer Science foundation: I think in systems, look for repeatable patterns, and automate rather than accept manual work as the default. At Atmus, I <strong>built and scaled an enterprise GRC program from nothing to ISO 27001 compliant and business enabling</strong>, architecting ServiceNow IRM workflows, Python and Power Automate pipelines, and KPI/KRI reporting that gives leadership an ongoing view of risk instead of a point-in-time audit snapshot. That same systems mindset carried through earlier roles at Deloitte and UBS, building internal tools and automation for security operations. Today, that combination of software development, security operations, and GRC shapes how I design controls, with a clear sense of how failures actually happen in practice.</p>
-      <div class="card-label">Focus Areas</div>
+      <p class="hero-desc">My approach to GRC started with a Computer Science foundation: I think in systems, look for repeatable patterns, and automate rather than accept manual work as the default. I <strong>built and scaled an enterprise GRC program from nothing to ISO 27001 compliant and business enabling</strong>, architecting ServiceNow IRM workflows, Python and Power Automate pipelines, and KPI/KRI reporting that gives leadership an ongoing view of risk instead of a point-in-time audit snapshot. That same systems mindset carried through earlier roles at Deloitte and UBS, building internal tools and automation for security operations. Today, that combination of software development, security operations, and GRC shapes how I design controls, with a clear sense of how failures actually happen in practice.</p>
+      <div class="card-label">Areas of Expertise</div>
       <div class="hero-chips">
         <span class="chip">GRC Engineering</span><span class="chip">GRC Automation</span><span class="chip">Continuous Controls Monitoring</span><span class="chip">Risk Quantification</span><span class="chip">ISO 27001</span><span class="chip">TPRM</span><span class="chip">NIST CSF</span><span class="chip">Automation with AI</span>
       </div>
@@ -247,32 +260,24 @@
         <div class="sec-count mono">4 roles</div>
       </div>
       <div class="tl-item">
-        <div class="tl-indicator"><div class="tl-dot current"></div><div class="tl-line"></div></div>
-        <div class="tl-body">
-          <div><div class="tl-primary">Atmus Filtration Technologies</div><div class="tl-secondary">Senior Cyber GRC Analyst · ISO 27001 ISMS · TPRM · ServiceNow IRM</div></div>
-          <div class="tl-date">Aug 2022 – Present</div>
-        </div>
+        <div class="tl-date current">Aug 2022 – Present</div>
+        <div class="tl-rule"></div>
+        <div class="tl-body"><div class="tl-primary">Atmus Filtration Technologies<span class="tl-current-tag">Current</span></div><div class="tl-secondary">Senior Cyber GRC Analyst · ISO 27001 ISMS · TPRM · ServiceNow IRM</div></div>
       </div>
       <div class="tl-item">
-        <div class="tl-indicator"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-body">
-          <div><div class="tl-primary">UBS</div><div class="tl-secondary">Cyber Security Specialist (Authorized Officer) · Data Loss Prevention</div></div>
-          <div class="tl-date">Jun 2021 – Aug 2022</div>
-        </div>
+        <div class="tl-date">Jun 2021 – Aug 2022</div>
+        <div class="tl-rule"></div>
+        <div class="tl-body"><div class="tl-primary">UBS</div><div class="tl-secondary">Cyber Security Specialist (Authorized Officer) · Data Loss Prevention</div></div>
       </div>
       <div class="tl-item">
-        <div class="tl-indicator"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-body">
-          <div><div class="tl-primary">Deloitte</div><div class="tl-secondary">Cyber Security Analyst · Forensics &amp; Insider Threat</div></div>
-          <div class="tl-date">Oct 2019 – Jun 2021</div>
-        </div>
+        <div class="tl-date">Oct 2019 – Jun 2021</div>
+        <div class="tl-rule"></div>
+        <div class="tl-body"><div class="tl-primary">Deloitte</div><div class="tl-secondary">Cyber Security Analyst · Forensics &amp; Insider Threat</div></div>
       </div>
       <div class="tl-item">
-        <div class="tl-indicator"><div class="tl-dot"></div></div>
-        <div class="tl-body">
-          <div><div class="tl-primary">Deloitte</div><div class="tl-secondary">Associate Cyber Security Business Analyst</div></div>
-          <div class="tl-date">Jul 2019 – Oct 2019</div>
-        </div>
+        <div class="tl-date">Jul 2019 – Oct 2019</div>
+        <div class="tl-rule"></div>
+        <div class="tl-body"><div class="tl-primary">Deloitte</div><div class="tl-secondary">Associate Cyber Security Business Analyst</div></div>
       </div>
     </section>
 
@@ -283,25 +288,19 @@
         <div class="sec-count mono">3 roles</div>
       </div>
       <div class="tl-item lead">
-        <div class="tl-indicator"><div class="tl-dot current"></div><div class="tl-line"></div></div>
-        <div class="tl-body">
-          <div><div class="tl-primary">Founding President</div><div class="tl-secondary">GRC Engineering Club, Nashville Chapter</div></div>
-          <div class="tl-date">Aug 2026 – Present</div>
-        </div>
+        <div class="tl-date current">Aug 2026 – Present</div>
+        <div class="tl-rule"></div>
+        <div class="tl-body"><div class="tl-primary">Founding President</div><div class="tl-secondary">GRC Engineering Club, Nashville Chapter</div></div>
       </div>
       <div class="tl-item lead">
-        <div class="tl-indicator"><div class="tl-dot current"></div><div class="tl-line"></div></div>
-        <div class="tl-body">
-          <div><div class="tl-primary">Certification Director</div><div class="tl-secondary">ISACA Middle Tennessee Chapter</div></div>
-          <div class="tl-date">Jun 2026 – Present</div>
-        </div>
+        <div class="tl-date current">Jun 2026 – Present</div>
+        <div class="tl-rule"></div>
+        <div class="tl-body"><div class="tl-primary">Certification Director</div><div class="tl-secondary">ISACA Middle Tennessee Chapter</div></div>
       </div>
       <div class="tl-item lead">
-        <div class="tl-indicator"><div class="tl-dot current"></div></div>
-        <div class="tl-body">
-          <div><div class="tl-primary">Cybersecurity &amp; Technology Mentor</div><div class="tl-secondary">Vanderbilt University, the Wond'ry</div></div>
-          <div class="tl-date">May 2026 – Present</div>
-        </div>
+        <div class="tl-date current">May 2026 – Present</div>
+        <div class="tl-rule"></div>
+        <div class="tl-body"><div class="tl-primary">Cybersecurity &amp; Technology Mentor</div><div class="tl-secondary">Vanderbilt University, the Wond'ry</div></div>
       </div>
     </section>
 
