@@ -76,8 +76,13 @@
   .pj-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem;}
   .pj-tags{display:flex;gap:0.35rem;flex-wrap:wrap;}
   .pj-tags span{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--text);border:1px solid var(--border2);padding:2px 6px;}
+  .pj-links{display:flex;gap:1rem;}
   .pj-links a{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--accent);text-decoration:none;}
   .pj-links a:hover{color:var(--ink);}
+  .pj-desc-intro{font-size:13.3px;color:var(--text);line-height:1.6;margin-bottom:0.9rem;}
+  .lab-list{display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1rem;}
+  .lab-item{font-size:13px;color:var(--text);line-height:1.6;}
+  .lab-num{font-weight:600;color:var(--ink);}
 
   /* TIMELINE (experience + leadership, shared) */
   .tl-section{margin-bottom:2.2rem;}
@@ -114,6 +119,7 @@
   .cert-name{font-family:'Space Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);}
   .cert-org{font-size:10.5px;color:var(--muted);}
   .cert-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;}
+  .cert-dot.in-progress{background:transparent;border:1.5px solid var(--muted);box-sizing:border-box;}
 
   .edu-list{display:grid;gap:0.85rem;}
   .edu-item{padding-bottom:0.85rem;border-bottom:1px solid var(--border);}
@@ -180,13 +186,13 @@
       <div class="projects-list">
         <div class="project-card">
           <div class="pj-head">
-            <div class="pj-title">Continuous AWS Compliance &amp; Evidence Pipeline</div>
+            <div class="pj-title">Implementing Continuous Control Monitoring with AWS, ServiceNow IRM, and Python</div>
             <div class="pj-num">01</div>
           </div>
           <p class="pj-desc">Built to close the gap between the enterprise ServiceNow IRM platform and the AWS environments it's supposed to govern. A <strong>detect</strong> loop runs daily at 8 AM CST: GitHub Actions pulls compliance status for seven AWS Config rules, writes evidence into ServiceNow against each mapped CIS v8 control over its REST Table API, and for every non-compliant control calls the Claude API for remediation guidance and runs a FAIR-informed Monte Carlo model (10,000 samples) to quantify exposure as a native ServiceNow risk record. One live finding carried $720K/year in exposure from a single IAM password-policy gap. The report goes out same-day as a PDF, delivered through a Slack bot and to the control owner's inbox. A parallel <strong>prevent</strong> gate converts every Terraform plan to JSON and evaluates it with Conftest against OPA Rego policies as a required branch-protection check, so non-compliant infrastructure is blocked at the pull request instead of remediated after it's already in production.</p>
           <div class="pj-foot">
             <div class="pj-tags"><span>python</span><span>aws config</span><span>servicenow irm rest api</span><span>claude api</span><span>terraform + conftest</span><span>fair + monte carlo</span><span>github actions</span></div>
-            <div class="pj-links"><a href="https://github.com/jonathansteward/RiskandCompliance" target="_blank" rel="noopener">github ↗</a></div>
+            <div class="pj-links"><a href="https://github.com/jonathansteward/RiskandCompliance" target="_blank" rel="noopener">github ↗</a><a href="https://github.com/jonathansteward/RiskandCompliance/blob/main/docs/continuous-control-monitoring-aws-servicenow-python.pdf" target="_blank" rel="noopener">presentation ↗</a></div>
           </div>
         </div>
 
@@ -204,12 +210,20 @@
 
         <div class="project-card">
           <div class="pj-head">
-            <div class="pj-title">Certified GRC Engineer Labs</div>
+            <div class="pj-title">GRC Engineering Projects</div>
             <div class="pj-num">03</div>
           </div>
-          <p class="pj-desc">Six progressive compliance-as-code labs built for the Certified GRC Engineer program: starting from a single NIST 800-53-mapped S3/GCS bucket, through Rego policies that validate a Terraform plan pre-apply, to a multi-cloud AWS + GCP Conftest gate, and finishing with a full pipeline combining GitHub Actions over OIDC, tfsec and Conftest gating, and Cosign keyless signing, that produces a verifiable, retention-locked chain of custody for audit evidence.</p>
+          <p class="pj-desc-intro">Six small projects built through the CGE-P (Certified GRC Engineer Practitioner) curriculum, each with committed evidence artifacts:</p>
+          <div class="lab-list">
+            <div class="lab-item"><span class="lab-num">First Compliant Resource:</span> a hardened AWS S3 primitive, encryption, public-access block, versioning, and tagging enforced directly in Terraform.</div>
+            <div class="lab-item"><span class="lab-num">Terraform Modules for Compliance:</span> the same control set wrapped as a reusable module for GCP Cloud Storage.</div>
+            <div class="lab-item"><span class="lab-num">IaC as Compliance Evidence:</span> scripted capture of Terraform plan and state into a dedicated evidence vault.</div>
+            <div class="lab-item"><span class="lab-num">Compliance Policies in Rego:</span> an OPA policy gate covering AC-3, CM-6, and SC-28, each with its own unit test.</div>
+            <div class="lab-item"><span class="lab-num">Policy as Code with Terraform:</span> the same three controls extended into a multi-cloud AWS and GCP Conftest gate.</div>
+            <div class="lab-item"><span class="lab-num">Evidence Pipeline and Chain of Custody:</span> GitHub Actions over OIDC, Conftest and tfsec gating, Cosign keyless signing, and S3 Object Lock retention for a signed chain of custody.</div>
+          </div>
           <div class="pj-foot">
-            <div class="pj-tags"><span>terraform</span><span>opa / rego</span><span>conftest</span><span>tfsec</span><span>cosign</span><span>nist 800-53</span></div>
+            <div class="pj-tags"><span>terraform</span><span>opa / rego</span><span>conftest</span><span>tfsec</span><span>cosign</span><span>nist 800-53</span><span>github actions</span></div>
             <div class="pj-links"><a href="https://github.com/jonathansteward/cgep" target="_blank" rel="noopener">github ↗</a></div>
           </div>
         </div>
@@ -219,7 +233,7 @@
             <div class="pj-title">GRC Engineering Weekly Labs</div>
             <div class="pj-num">04</div>
           </div>
-          <p class="pj-desc">A weekly, build-from-scratch companion track for the same compliance-as-code skillset: Terraform resources tagged to NIST 800-53 controls, Rego policies and tests enforcing AC-3 (no public exposure), CM-6 (required tagging), and SC-28 (encryption at rest), with GitHub Actions workflows capturing each Terraform plan as machine-readable evidence.</p>
+          <p class="pj-desc">An in-progress, build-from-scratch companion track through the same early CGE-P curriculum, using weekly folders that map to official lab numbers: Week 1 implements Lab 2.3's AWS S3 control set (SC-28 encryption, CM-6 tagging, AC-3 public-access block, AU-3 logging) across two buckets; Week 2 implements Lab 3.3's OPA/Rego policies and tests for the same three controls against the Week 1 Terraform plan; Week 3 implements Lab 4.3's evidence-gate pattern, a GitHub Actions workflow that runs Conftest against the Week 2 policies, uploads evidence, and fails the build on violation. Live OIDC-based plan generation, rather than the currently committed plan JSON, is the explicit next step.</p>
           <div class="pj-foot">
             <div class="pj-tags"><span>terraform</span><span>opa / rego</span><span>github actions</span><span>nist 800-53</span></div>
             <div class="pj-links"><a href="https://github.com/jonathansteward/GRCEngineering" target="_blank" rel="noopener">github ↗</a></div>
@@ -319,6 +333,7 @@
         <div class="cert-row"><div><div class="cert-name">CISM</div><div class="cert-org">ISACA</div></div><div class="cert-dot"></div></div>
         <div class="cert-row"><div><div class="cert-name">CRISC</div><div class="cert-org">ISACA</div></div><div class="cert-dot"></div></div>
         <div class="cert-row"><div><div class="cert-name">ISO/IEC 27001:2022</div><div class="cert-org">Lead Auditor</div></div><div class="cert-dot"></div></div>
+        <div class="cert-row"><div><div class="cert-name">CGE-P</div><div class="cert-org">GRC Engineering Club · In Progress</div></div><div class="cert-dot in-progress"></div></div>
       </div>
     </div>
 
