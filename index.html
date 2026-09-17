@@ -59,6 +59,13 @@
   .chip{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.02em;padding:5px 10px;border:1px solid var(--border2);color:var(--text);transition:border-color 0.2s,color 0.2s;}
   .chip:hover{border-color:var(--accent);color:var(--accent);}
 
+  /* RESUME CALLOUT */
+  .resume-callout{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;background:var(--bg2);border:1px solid var(--border2);border-left:2px solid var(--accent);padding:1.1rem 1.4rem;margin-bottom:2.2rem;}
+  .rc-label{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
+  .rc-desc{font-size:12.5px;color:var(--muted);}
+  .rc-button{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.03em;color:var(--bg);background:var(--accent);padding:9px 18px;text-decoration:none;white-space:nowrap;transition:opacity 0.2s;}
+  .rc-button:hover{opacity:0.85;}
+
   /* SECTION HEADER */
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border2);}
   .sec-head h2{font-size:1.35rem;font-weight:500;}
@@ -175,6 +182,15 @@
       <div class="hero-chips">
         <span class="chip">ISO 27001</span><span class="chip">NIST RMF</span><span class="chip">NIST CSF</span><span class="chip">ISO 27005</span><span class="chip">ServiceNow IRM</span><span class="chip">TPRM</span><span class="chip">AI Risk Governance</span>
       </div>
+    </section>
+
+    <!-- RESUME -->
+    <section class="resume-callout">
+      <div class="rc-text">
+        <div class="rc-label">Resume</div>
+        <div class="rc-desc">Full experience, certifications, and project history in one PDF.</div>
+      </div>
+      <a class="rc-button" href="resume.pdf" target="_blank" rel="noopener">View Resume ↓</a>
     </section>
 
     <!-- PROJECTS -->
@@ -345,7 +361,6 @@
     <div class="card" id="connect">
       <div class="card-label">Connect</div>
       <div class="connect-list">
-        <div class="connect-item"><a href="resume.pdf" target="_blank" rel="noopener">Resume</a><span>↓</span></div>
         <div class="connect-item"><a href="https://www.linkedin.com/in/jonathansteward97/" target="_blank" rel="noopener">LinkedIn</a><span>↗</span></div>
         <div class="connect-item"><a href="https://github.com/jonathansteward" target="_blank" rel="noopener">GitHub</a><span>↗</span></div>
         <div class="connect-item"><a href="mailto:jonathan.steward16@gmail.com">Email</a><span>↗</span></div>
