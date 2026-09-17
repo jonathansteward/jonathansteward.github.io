@@ -23,7 +23,7 @@
 
   body{
     background:var(--bg);color:var(--text);font-family:'Public Sans',system-ui,sans-serif;
-    font-size:15px;line-height:1.65;
+    font-size:16px;line-height:1.65;
   }
   a{color:inherit;}
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;text-wrap:balance;color:var(--ink);}
@@ -53,16 +53,16 @@
   .hero-kicker{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.9rem;}
   .hero-name{font-size:2.5rem;font-weight:600;letter-spacing:-0.015em;line-height:1.08;margin-bottom:1.4rem;}
   .hero-name span{color:var(--accent);}
-  .hero-desc{font-size:15.5px;line-height:1.85;max-width:620px;color:var(--text);margin-bottom:1.4rem;}
+  .hero-desc{font-size:17px;line-height:1.85;max-width:620px;color:var(--text);margin-bottom:1.4rem;}
   .hero-desc strong{color:var(--ink);font-weight:600;}
   .hero-chips{display:flex;gap:0.5rem;flex-wrap:wrap;}
-  .chip{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.02em;padding:5px 10px;border:1px solid var(--border2);color:var(--text);transition:border-color 0.2s,color 0.2s;}
+  .chip{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.02em;padding:5px 10px;border:1px solid var(--border2);color:var(--text);transition:border-color 0.2s,color 0.2s;}
   .chip:hover{border-color:var(--accent);color:var(--accent);}
 
   /* RESUME CALLOUT */
   .resume-callout{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;background:var(--bg2);border:1px solid var(--border2);border-left:2px solid var(--accent);padding:1.1rem 1.4rem;margin-bottom:2.2rem;}
   .rc-label{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
-  .rc-desc{font-size:12.5px;color:var(--muted);}
+  .rc-desc{font-size:13px;color:var(--muted);}
   .rc-button{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.03em;color:var(--bg);background:var(--accent);padding:9px 18px;text-decoration:none;white-space:nowrap;transition:opacity 0.2s;}
   .rc-button:hover{opacity:0.85;}
 
@@ -79,16 +79,16 @@
   .pj-head{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin-bottom:0.5rem;flex-wrap:wrap;}
   .pj-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:500;color:var(--ink);}
   .pj-num{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);}
-  .pj-desc{font-size:13.3px;color:var(--text);line-height:1.75;margin-bottom:0.9rem;}
+  .pj-desc{font-size:14.5px;color:var(--text);line-height:1.75;margin-bottom:0.9rem;}
   .pj-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem;}
   .pj-tags{display:flex;gap:0.35rem;flex-wrap:wrap;}
   .pj-tags span{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--text);border:1px solid var(--border2);padding:2px 6px;}
   .pj-links{display:flex;gap:1rem;}
   .pj-links a{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--accent);text-decoration:none;}
   .pj-links a:hover{color:var(--ink);}
-  .pj-desc-intro{font-size:13.3px;color:var(--text);line-height:1.6;margin-bottom:0.9rem;}
+  .pj-desc-intro{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:0.9rem;}
   .lab-list{display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1rem;}
-  .lab-item{font-size:13px;color:var(--text);line-height:1.6;}
+  .lab-item{font-size:14px;color:var(--text);line-height:1.6;}
   .lab-num{font-weight:600;color:var(--ink);}
 
   /* TIMELINE (experience + leadership, shared) */
@@ -101,13 +101,13 @@
   .tl-dot.current{background:var(--accent);box-shadow:0 0 8px var(--accent-line);}
   .tl-line{width:1px;flex:1;background:var(--border2);min-height:14px;margin-top:4px;}
   .tl-body{flex:1;min-width:0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
-  .tl-primary{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
-  .tl-secondary{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--text);line-height:1.6;}
+  .tl-primary{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:0.2rem;}
+  .tl-secondary{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--text);line-height:1.6;}
   .tl-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);white-space:nowrap;padding-top:0.2rem;}
 
   /* leadership: swap emphasis so the position reads larger than the org */
   .tl-item.lead .tl-primary{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--ink);}
-  .tl-item.lead .tl-secondary{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);}
+  .tl-item.lead .tl-secondary{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--muted);}
 
   /* SIDEBAR CARDS */
   .card{background:var(--bg2);border:1px solid var(--border2);padding:1.4rem;}
@@ -115,7 +115,7 @@
 
   .pc-header{margin-bottom:1.1rem;}
   .pc-name{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:0.25rem;}
-  .pc-role{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--accent);line-height:1.5;}
+  .pc-role{font-family:'Space Mono',monospace;font-size:11.5px;color:var(--accent);line-height:1.5;}
   .pc-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
   .pc-stat{background:var(--bg3);padding:0.8rem 0.6rem;text-align:center;}
   .pc-stat-n{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums;}
@@ -123,23 +123,23 @@
 
   .cert-list{display:grid;gap:0.4rem;}
   .cert-row{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0.8rem;background:var(--bg3);}
-  .cert-name{font-family:'Space Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);}
-  .cert-org{font-size:10.5px;color:var(--muted);}
+  .cert-name{font-family:'Space Mono',monospace;font-size:13px;font-weight:500;color:var(--ink);}
+  .cert-org{font-size:11px;color:var(--muted);}
   .cert-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;}
   .cert-dot.in-progress{background:transparent;border:1.5px solid var(--muted);box-sizing:border-box;}
 
   .edu-list{display:grid;gap:0.85rem;}
   .edu-item{padding-bottom:0.85rem;border-bottom:1px solid var(--border);}
   .edu-item:last-child{border-bottom:none;padding-bottom:0;}
-  .edu-degree{font-size:12.5px;font-weight:600;color:var(--ink);}
-  .edu-school{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--text);margin-top:0.2rem;}
+  .edu-degree{font-size:13.5px;font-weight:600;color:var(--ink);}
+  .edu-school{font-family:'Space Mono',monospace;font-size:11px;color:var(--text);margin-top:0.2rem;}
   .edu-note{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-top:0.2rem;}
 
   .connect-list{display:grid;gap:0.3rem;}
   .connect-item{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0;border-bottom:1px solid var(--border);transition:padding-left 0.15s;}
   .connect-item:last-child{border-bottom:none;}
   .connect-item:hover{padding-left:0.35rem;}
-  .connect-item a{font-family:'Space Mono',monospace;font-size:12.5px;color:var(--ink);text-decoration:none;transition:color 0.2s;}
+  .connect-item a{font-family:'Space Mono',monospace;font-size:13.5px;color:var(--ink);text-decoration:none;transition:color 0.2s;}
   .connect-item:hover a{color:var(--accent);}
   .connect-item span{font-size:11px;color:var(--muted);}
 
@@ -189,7 +189,7 @@
     <section class="resume-callout">
       <div class="rc-text">
         <div class="rc-label">Resume</div>
-        <div class="rc-desc">Full experience, certifications, and project history in one PDF.</div>
+        <div class="rc-desc">Work experience, education, and other information in PDF format</div>
       </div>
       <a class="rc-button" href="resume.pdf" target="_blank" rel="noopener">View Resume ↓</a>
     </section>
